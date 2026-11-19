@@ -16,7 +16,7 @@ export default function ArtikelHero() {
         className="relative h-[360px] overflow-hidden rounded-b-[56px] sm:h-[460px] lg:h-[858px] lg:rounded-b-[118px]"
       >
         <Image
-          src="/images/artikel/hero-bg.png"
+          src="/images/artikel/artikel.svg"
           alt="Gedung Politeknik Negeri Batam"
           fill
           priority
@@ -25,13 +25,7 @@ export default function ArtikelHero() {
         />
       </div>
 
-      {/* Tombol Login: 175 x 51,5 di Figma (÷2) */}
-      <Link
-        href="/admin" // TODO: sesuaikan dengan halaman login admin
-        className="absolute right-4 top-[96px] flex h-10 w-[104px] items-center justify-center rounded-[12.5px] border border-black bg-white/45 text-[16px] font-normal text-black transition-colors hover:bg-white/70 lg:right-[124.5px] lg:top-[88.5px] lg:h-[51.5px] lg:w-[175px] lg:text-[24px]"
-      >
-        Login
-      </Link>
+     
     </section>
   );
 }

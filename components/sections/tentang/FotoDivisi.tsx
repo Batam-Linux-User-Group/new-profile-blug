@@ -18,11 +18,11 @@ import { useState } from "react";
  * Mau tambah/kurangi divisi? Cukup ubah daftar DIVISI di bawah.
  */
 const DIVISI = [
-  { nama: "Inti", gambar: "/images/tentang/divisi/inti.jpg" },
-  { nama: "Medinfo", gambar: "/images/tentang/divisi/medinfo.jpg" },
-  { nama: "Programming", gambar: "/images/tentang/divisi/programming.jpg" },
-  { nama: "Siber", gambar: "/images/tentang/divisi/siber.jpg" },
-  { nama: "HRD", gambar: "/images/tentang/divisi/hrd.jpg" },
+  { nama: "Inti", gambar: "/images/tentang/divisi/inti.svg" },
+  { nama: "Medinfo", gambar: "/images/tentang/divisi/medinfo.svg" },
+  { nama: "Programming", gambar: "/images/tentang/divisi/programming.svg" },
+  { nama: "Siber", gambar: "/images/tentang/divisi/siber.svg" },
+  { nama: "HRD", gambar: "/images/tentang/divisi/hrd.svg" },
 ];
 
 function Panah({ arah, onClick }: { arah: "kiri" | "kanan"; onClick: () => void }) {

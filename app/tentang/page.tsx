@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Tentang | Batam Linux User Group",
 };
 
-/** Cahaya emas radial (Ellipse 21 / 34 di Figma: 750 x 1209,5px, opasitas 80%) */
 const glow =
   "radial-gradient(closest-side, rgba(200,155,0,.8) 0%, rgba(200,155,0,.6) 25%, rgba(200,155,0,.4) 50%, rgba(200,155,0,.2) 75%, rgba(200,155,0,.1) 87.5%, rgba(200,155,0,0) 100%)";
 

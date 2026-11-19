@@ -18,6 +18,11 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "BLUG - Batam Linux User Group",
+  description: "Batam Linux User Group - Open Source Community",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

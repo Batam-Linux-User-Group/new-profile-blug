@@ -29,31 +29,34 @@ type Divisi = {
 };
 
 const divisi: Divisi[] = [
-  {
-    slug: "inti",
-    label: "INTI",
-    title: "DIVISI INTI",
-    desc: "Divisi inti adalah Divisi yang bertanggung jawab dalam menjaga organisasi tetap berjalan, mengurus administrasi dan kearsipan, serta menjaga permasalahan internal & eksternal.",
-    card: { left: 48.25, right: 278.8, top: 372, height: 180 },
-    photo: { left: 762, top: 296, width: 210, height: 329 },
-    block: { left: 769, top: 356 },
-  },
-  {
-    slug: "hrd",
-    label: "HRD",
-    title: "DIVISI HRD",
-    desc: "Divisi HRD adalah Divisi yang menjaga hubungan antar-anggota sekaligus membangun relasi dengan pihak luar. HRD juga memastikan kerja sama dan suasana internal tetap solid, nyaman, dan harmonis.",
-    card: { left: 281, right: 46, top: 372, height: 182 },
-    photo: { left: 17.75, top: 302, width: 256, height: 321 },
-    block: { left: 38.4, top: 354.4 },
-  },
+ {
+  slug: "inti",
+  label: "INTI",
+  title: "DIVISI INTI",
+  desc: "Divisi inti adalah Divisi yang bertanggung jawab dalam menjaga organisasi tetap berjalan, mengurus administrasi dan kearsipan, serta menjaga permasalahan internal & eksternal.",
+  card: { left: 48.25, right: 278.8, top: 372, height: 180 },
+  // Ukuran diperbesar (misal: 320x460), posisi left & top digeser agar tetap center
+  photo: { left: 688, top: -162, width: 400, height: 800 }, 
+  block: { left: 769, top: 356 },
+},
+{
+  slug: "hrd",
+  label: "HRD",
+  title: "DIVISI HRD",
+  desc: "Divisi HRD adalah Divisi yang menjaga hubungan antar-anggota sekaligus membangun relasi dengan pihak luar. HRD juga memastikan kerja sama dan suasana internal tetap solid, nyaman, dan harmonis.",
+  card: { left: 281, right: 46, top: 372, height: 182 },
+  // Diperbesar dari 256x321 menjadi 310x390, top naik agar kaki tetap sejajar
+  photo: { left: -65, top: 323, width: 400, height: 300 },
+  block: { left: 38.4, top: 354.4 },
+},
   {
     slug: "siber",
     label: "SIBER",
     title: "DIVISI SIBER",
     desc: "Divisi Siber adalah Divisi yang bergerak di bidang keamanan siber dan jaringan komputer. Fokusnya adalah memperluas wawasan, melatih keterampilan, dan membangun kesadaran tentang pentingnya keamanan digital.",
     card: { left: 284.5, right: 42.5, top: 372, height: 180 },
-    photo: { left: 27.75, top: 278, width: 234, height: 345 },
+    // Diperbesar dari 234x345 menjadi 250x370, top naik agar kaki tetap sejajar
+  photo: { left: -65, top: 323, width: 400, height: 300 },
     block: { left: 38.4, top: 354.4 },
   },
   {
@@ -62,7 +65,7 @@ const divisi: Divisi[] = [
     title: "DIVISI PROGRAMMING",
     desc: "Divisi Programming adalah Divisi yang berfokus pada pengembangan kemampuan pemrograman bagi anggota BLUG maupun masyarakat umum. Programming menjadi wadah belajar, berbagi ilmu, dan mengembangkan project bersama di bidang software.",
     card: { left: 286, right: 41, top: 383, height: 175 },
-    photo: { left: 20.75, top: 296, width: 225.6, height: 327 },
+  photo: { left: -65, top: 323, width: 400, height: 300 },
     block: { left: 38.4, top: 354.4 },
   },
   {
@@ -71,7 +74,7 @@ const divisi: Divisi[] = [
     title: "DIVISI MEDINFO",
     desc: "Divisi Medinfo adalah Divisi yang mengelola media informasi BLUG, termasuk sosial media, konten publikasi, dan dokumentasi kegiatan. Medinfo menjadi wajah organisasi dalam menyampaikan informasi kepada publik.",
     card: { left: 285.4, right: 41.6, top: 383.4, height: 180 },
-    photo: { left: 44.9, top: 317.5, width: 182.5, height: 308.6 },
+  photo: { left: -65, top: 323, width: 400, height: 300 },
     block: { left: 38.4, top: 354.4 },
   },
 ];
@@ -199,19 +202,18 @@ export default function LogoDivisi() {
                   style={{ left: d.block.left, top: d.block.top }}
                   className={`absolute h-[268.5px] w-[196px] rounded-tl-[15px] ${gradRed}`}
                 />
-                {/* foto ketua divisi (tanpa latar) */}
-                <div
-                  style={{ left: d.photo.left, top: d.photo.top, width: d.photo.width, height: d.photo.height }}
-                  className="absolute"
-                >
-                  <Image
-                    src={`/images/divisi/foto-${d.slug}.png`}
-                    alt={`Perwakilan ${d.title}`}
-                    fill
-                    sizes="260px"
-                    className="object-contain object-bottom"
-                  />
-                </div>
+<div
+  style={{ left: d.photo.left, top: d.photo.top, width: d.photo.width, height: d.photo.height }}
+  className="absolute"
+>
+  <Image
+    src={`/images/divisi/foto-${d.slug}.svg`}
+    alt={`Perwakilan ${d.title}`}
+    fill
+    unoptimized
+    className="object-contain object-bottom"
+  />
+</div>
                 <InfoCard
                   d={d}
                   className="absolute"

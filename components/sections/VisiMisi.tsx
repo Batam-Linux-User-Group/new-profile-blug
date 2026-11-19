@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 
 /*
- * Kotak VISI / MISI (komponen "Group 237" di Figma, varian Default & Variant2).
- *  - Default : tulisan besar "VISI" + label "BATAM LINUX USER GROUP"
- *  - Variant2: kartu putih berisi teks meluncur masuk dari kiri (menutupi judul)
- * Sesuai prototype: kartu muncul saat kursor diarahkan (hover) dan kembali saat kursor pergi.
- * Di layar sentuh (tidak ada hover) kotak diketuk untuk berganti; keyboard: Enter / Space.
- * Ukuran = Figma dibagi 2 (lebar 515,5px), dihitung proporsional terhadap lebar kotak (cqw).
+- Kotak VISI / MISI (komponen "Group 237" di Figma, varian Default & Variant2).
+-  - Default : tulisan besar "VISI" + label "BATAM LINUX USER GROUP" + indikator interaktif
+-  - Variant2: kartu putih berisi teks meluncur masuk dari kiri (menutupi judul)
+- Sesuai prototype: kartu muncul saat kursor diarahkan (hover) dan kembali saat kursor pergi.
+- Di layar sentuh (tidak ada hover) kotak diketuk untuk berganti; keyboard: Enter / Space.
+- Ukuran = Figma dibagi 2 (lebar 515,5px), dihitung proporsional terhadap lebar kotak (cqw).
  */
 
 const u = (n: number) => `calc(var(--u) * ${n})`;
@@ -39,7 +39,7 @@ function FlipCard({ title, text }: { title: string; text: string }) {
         lastPointer.current = "keyboard";
       }}
       onBlur={() => setOpen(false)}
-      className="relative aspect-[1031/751] w-full max-w-[515.5px] cursor-pointer overflow-hidden [container-type:inline-size] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f9d00a]"
+      className="group relative aspect-[1031/751] w-full max-w-[515.5px] cursor-pointer overflow-hidden rounded-[21px] border border-white/15 bg-white/[0.02] transition-all duration-300 [container-type:inline-size] hover:border-[#fcd205]/60 hover:bg-white/[0.04] hover:shadow-[0_0_30px_-5px_rgba(252,210,5,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f9d00a]"
     >
       <span
         className="absolute inset-0 block"
@@ -47,27 +47,38 @@ function FlipCard({ title, text }: { title: string; text: string }) {
       >
         {/* Muka depan: judul besar + label */}
         <span
-          style={{ top: "26.46%", fontSize: u(146.4) }}
-          className="absolute inset-x-0 text-center font-bold leading-[normal] text-[#fcd205]"
+          style={{ top: "24%", fontSize: u(146.4) }}
+          className="absolute inset-x-0 text-center font-bold leading-[normal] text-[#fcd205] transition-transform duration-300 group-hover:scale-[1.03]"
         >
           {title}
         </span>
         <span
-          style={{ top: u(248.9), width: u(289.5), height: u(32), borderRadius: u(7), borderWidth: 1 }}
-          className="absolute left-1/2 -translate-x-1/2 border-solid border-white"
+          style={{ top: u(240), width: u(289.5), height: u(32), borderRadius: u(7), borderWidth: 1 }}
+          className="absolute left-1/2 -translate-x-1/2 border-solid border-white/80 transition-colors duration-300 group-hover:border-[#fcd205]"
         />
         <span
-          style={{ top: u(264.6), fontSize: u(14.3) }}
+          style={{ top: u(256), fontSize: u(14.3) }}
           className="absolute inset-x-0 -translate-y-1/2 text-center font-bold leading-none text-[#f7f3f3]"
         >
           BATAM LINUX USER GROUP
         </span>
 
-        {/* Kartu putih: meluncur dari kiri saat hover (0,9 detik di Figma) */}
+        {/* Petunjuk visual halus di bawah agar user tahu kartu bisa di-hover/klik */}
+        <span
+          style={{ bottom: u(26), fontSize: u(12), gap: u(6) }}
+          className={`absolute inset-x-0 flex items-center justify-center font-medium tracking-wider text-white/50 transition-all duration-300 group-hover:text-[#fcd205] ${
+            open ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-[#fcd205]" />
+          <span className="sm:hidden">Ketuk untuk melihat</span>
+        </span>
+
+        {/* Kartu putih: mengintip sedikit (-97.5%) di tepi kiri sebagai pancingan visual, lalu meluncur penuh saat open */}
         <span
           aria-hidden={!open}
           style={{
-            transform: open ? "translateX(0)" : "translateX(-103%)",
+            transform: open ? "translateX(0)" : "translateX(-97.5%)",
             transitionTimingFunction: "cubic-bezier(0, 0, 0, 1)",
           }}
           className="absolute inset-0 block transition-transform duration-[900ms] motion-reduce:transition-none"
